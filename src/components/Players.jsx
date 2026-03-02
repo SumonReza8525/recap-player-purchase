@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import userImg from "../assets/user.png";
 import flagImg from "../assets/report.png";
 import { toast } from "react-toastify";
-const Players = ({ player, handleChoose, choosePlayer }) => {
+const Players = ({
+  player,
+  handleChoose,
+  choosePlayer,
+  setAvailableBalance,
+  availableBalance,
+}) => {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleIsSelected = (player) => {
@@ -10,10 +16,15 @@ const Players = ({ player, handleChoose, choosePlayer }) => {
       toast("You can select only 6 players");
       return;
     }
+    if (availableBalance < player.playerPrice) {
+      toast("not enough coins");
+      return;
+    }
     handleChoose(player);
     setIsSelected(true);
+    setAvailableBalance(availableBalance - player.playerPrice);
   };
-
+  // console.log(availableBalance);
   return (
     <div
       className="border-3 border-[rgba(96,165,250,0.6)] rounded-2xl p-5 

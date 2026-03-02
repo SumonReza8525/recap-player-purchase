@@ -35,6 +35,8 @@ const App = () => {
     setChoosePlayer([...updated]);
   };
 
+  const [availableBalance, setAvailableBalance] = useState(800000);
+
   // Players array loading from json data
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -64,7 +66,7 @@ const App = () => {
   return (
     <div className="">
       <Container>
-        <Navbar></Navbar>
+        <Navbar availableBalance={availableBalance}></Navbar>
         <Hero></Hero>
         <TogglePlayers
           choosePlayer={choosePlayer}
@@ -80,6 +82,8 @@ const App = () => {
                 key={player.id}
                 player={player}
                 choosePlayer={choosePlayer}
+                availableBalance={availableBalance}
+                setAvailableBalance={setAvailableBalance}
               ></Players>
             ))}
           </div>
@@ -87,6 +91,8 @@ const App = () => {
           <SelectedContainer
             choosePlayer={choosePlayer}
             handleDelete={handleDelete}
+            availableBalance={availableBalance}
+            setAvailableBalance={setAvailableBalance}
           ></SelectedContainer>
         )}
 
