@@ -35,7 +35,7 @@ const App = () => {
     setChoosePlayer([...updated]);
   };
 
-  const [availableBalance, setAvailableBalance] = useState(800000);
+  const [availableBalance, setAvailableBalance] = useState(1000000);
 
   // Players array loading from json data
   const [players, setPlayers] = useState([]);
@@ -59,7 +59,11 @@ const App = () => {
   }, []);
 
   if (loading)
-    return <span className="loading loading-spinner loading-xl"></span>;
+    return (
+      <div className="w-full min-h-80 flex justify-center items-center">
+        <span className="loading loading-spinner loading-xl "></span>
+      </div>
+    );
   if (error) return <p>Error : {error}</p>;
   // Players array data loads end here
 
