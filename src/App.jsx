@@ -8,7 +8,19 @@ import TogglePlayers from "./components/TogglePlayers";
 import SelectedContainer from "./components/SelectedContainer";
 
 const App = () => {
+  // toggle
   const [toggle, setToggle] = useState(true);
+
+  // Choose players
+  const [choosePlayer, setChoosePlayer] = useState([]);
+
+  const handleChoose = (p) => {
+    const exist = choosePlayer.find((item) => item.id === p.id);
+    if (!exist) {
+      setChoosePlayer([...choosePlayer, p]);
+    }
+  };
+  // console.log(choosePlayer);
   // Players array loading from json data
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,16 +56,24 @@ const App = () => {
       <Container>
         <Navbar></Navbar>
         <Hero></Hero>
-        <TogglePlayers toggle={toggle} setToggle={setToggle}></TogglePlayers>
+        <TogglePlayers
+          choosePlayer={choosePlayer}
+          toggle={toggle}
+          setToggle={setToggle}
+        ></TogglePlayers>
 
         {toggle ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {players.map((player) => (
-              <Players key={player.id} player={player}></Players>
+              <Players
+                handleChoose={handleChoose}
+                key={player.id}
+                player={player}
+              ></Players>
             ))}
           </div>
         ) : (
-          <SelectedContainer></SelectedContainer>
+          <SelectedContainer choosePlayer={choosePlayer}></SelectedContainer>
         )}
       </Container>
       <FooterContainer></FooterContainer>

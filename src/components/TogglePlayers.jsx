@@ -1,23 +1,25 @@
 import React from "react";
 
-const TogglePlayers = ({ toggle, setToggle }) => {
+const TogglePlayers = ({ toggle, setToggle, choosePlayer }) => {
   return (
     <div className="flex justify-between items-center mb-10 gap-2 px-2">
       <p className=" font-bold text-lg md:text-xl">
-        {toggle ? "Available Players" : "Selected Players"}
+        {toggle
+          ? "Available Players"
+          : `Selected Players (${choosePlayer.length}/6)`}
       </p>
       <div className="flex justify-between items-center  ">
         <button
           onClick={() => setToggle(true)}
-          className={`py-1.5 px-2 border border-gray-400 border-r-0 rounded-l-xl ${toggle ? "bg-amber-400" : ""}`}
+          className={`py-1.5 px-2 border font-semibold border-gray-400 border-r-0 rounded-l-xl ${toggle ? "bg-amber-400" : ""}`}
         >
           Available
         </button>
         <button
           onClick={() => setToggle(false)}
-          className={`py-1.5 px-2 border border-gray-400 border-l-0 rounded-r-xl ${toggle ? "" : "bg-amber-400"}`}
+          className={`py-1.5 px-2 border font-semibold border-gray-400 border-l-0 rounded-r-xl ${toggle ? "" : "bg-amber-400"}`}
         >
-          Selected(<span>4</span>)
+          Selected(<span className="text-blue-600">{choosePlayer.length}</span>)
         </button>
       </div>
     </div>

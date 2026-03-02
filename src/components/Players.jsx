@@ -1,7 +1,7 @@
 import React from "react";
 import userImg from "../assets/user.png";
 import flagImg from "../assets/report.png";
-const Players = ({ player }) => {
+const Players = ({ player, handleChoose }) => {
   return (
     <div
       className="border-3 border-[rgba(96,165,250,0.6)] rounded-2xl p-5 
@@ -36,7 +36,10 @@ hover:border-[rgba(96,165,250,0.93)]"
         <p className="font-semibold">
           Price : $<span>{player.playerPrice}</span>
         </p>
-        <button className="px-3 py-1.5 rounded-xl bg-gray-300 font-semibold">
+        <button
+          onClick={() => handleChoose(player)}
+          className="px-3 py-1.5 rounded-xl bg-gray-300 font-semibold"
+        >
           Choose Player
         </button>
       </div>
