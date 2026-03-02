@@ -2,7 +2,7 @@ import React from "react";
 import footerImg from "/public/bg-shadow.png";
 const FooterContainer = () => {
   return (
-    <div className="w-full   mt-70 relative">
+    <div className="w-full   mt-50 relative">
       <div className="p-2 border-2 border-white absolute top-[-20%] rounded-2xl w-[90%] md:w-[80%] min-h-50 mx-auto z-40 left-[5%] md:left-[10%] bg-[#ffffff3f]">
         <div
           className=" rounded-2xl flex flex-col items-center justify-center bg-white space-y-2 p-1.5 min-h-50 shadow-accent-content"

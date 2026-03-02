@@ -6,6 +6,7 @@ import Players from "./components/Players";
 import FooterContainer from "./components/FooterContainer";
 import TogglePlayers from "./components/TogglePlayers";
 import SelectedContainer from "./components/SelectedContainer";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   // toggle
@@ -16,7 +17,7 @@ const App = () => {
 
   const handleChoose = (p) => {
     const exist = choosePlayer.find((item) => item.id === p.id);
-    if (!exist) {
+    if (!exist && choosePlayer.length < 6) {
       setChoosePlayer([...choosePlayer, p]);
     }
   };
@@ -69,12 +70,15 @@ const App = () => {
                 handleChoose={handleChoose}
                 key={player.id}
                 player={player}
+                choosePlayer={choosePlayer}
               ></Players>
             ))}
           </div>
         ) : (
           <SelectedContainer choosePlayer={choosePlayer}></SelectedContainer>
         )}
+
+        <ToastContainer></ToastContainer>
       </Container>
       <FooterContainer></FooterContainer>
     </div>

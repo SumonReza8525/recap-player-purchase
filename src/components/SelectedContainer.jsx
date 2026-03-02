@@ -3,7 +3,7 @@ import AddedPlayerCard from "./AddedPlayerCard";
 
 const SelectedContainer = ({ choosePlayer }) => {
   return (
-    <div className=" w-full min-h-48 rounded-2xl space-y-4 p-4">
+    <div className=" w-full  rounded-2xl space-y-4 p-4">
       {choosePlayer.map((p) => (
         <AddedPlayerCard p={p} key={p.id}></AddedPlayerCard>
       ))}

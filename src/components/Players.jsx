@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import userImg from "../assets/user.png";
 import flagImg from "../assets/report.png";
-const Players = ({ player, handleChoose }) => {
+import { toast } from "react-toastify";
+const Players = ({ player, handleChoose, choosePlayer }) => {
+  const [isSelected, setIsSelected] = useState(false);
+
+  const handleIsSelected = (player) => {
+    if (choosePlayer.length >= 6) {
+      toast("You can select only 6 players");
+      return;
+    }
+    handleChoose(player);
+    setIsSelected(true);
+  };
+
   return (
     <div
       className="border-3 border-[rgba(96,165,250,0.6)] rounded-2xl p-5 
@@ -37,10 +49,11 @@ hover:border-[rgba(96,165,250,0.93)]"
           Price : $<span>{player.playerPrice}</span>
         </p>
         <button
-          onClick={() => handleChoose(player)}
-          className="px-3 py-1.5 rounded-xl bg-gray-300 font-semibold"
+          disabled={isSelected}
+          onClick={() => handleIsSelected(player)}
+          className={`px-3 py-1.5 rounded-xl  font-semibold ${isSelected ? "bg-blue-400" : "bg-gray-300"}`}
         >
-          Choose Player
+          {isSelected ? "Selected" : "Choose Player"}
         </button>
       </div>
     </div>

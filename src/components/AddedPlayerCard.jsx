@@ -2,7 +2,7 @@ import React from "react";
 
 const AddedPlayerCard = ({ p }) => {
   return (
-    <div className="flex justify-between items-center bg-accent-content p-3 rounded-xl">
+    <div className="flex justify-between items-center bg-accent-content p-3 rounded-xl max-w-225 mx-auto">
       <div className="flex gap-3 items-center">
         <img
           className="w-28 object-cover rounded-2xl"
@@ -11,11 +11,11 @@ const AddedPlayerCard = ({ p }) => {
         />
 
         <div className="text-white">
-          <h2 className="text-2xl  font-bold">{p.playerName}</h2>
+          <h2 className="text-xl md:text-2xl font-bold">{p.playerName}</h2>
           <p className="text-gray-300">{p.playerCountry}</p>
         </div>
       </div>
-      <p className="text-red-600 font-extrabold">Delete</p>
+      <p className="text-red-600 font-semibold">Delete</p>
     </div>
   );
 };
