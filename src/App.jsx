@@ -9,28 +9,32 @@ import SelectedContainer from "./components/SelectedContainer";
 import { ToastContainer } from "react-toastify";
 
 const App = () => {
-  // toggle
+  // toggle between Available and Selected Players
   const [toggle, setToggle] = useState(true);
 
-  // Choose players
+  // Choose players / Select Players
   const [choosePlayer, setChoosePlayer] = useState([]);
 
   const handleChoose = (p) => {
-    const exist = choosePlayer.find((item) => item.id === p.id);
-    if (!exist && choosePlayer.length < 6) {
-      setChoosePlayer([...choosePlayer, p]);
-    }
+    setChoosePlayer((prev) => {
+      const exist = prev.find((item) => item.id === p.id);
+      if (exist) return prev;
+
+      // if (prev.length >= 6) {
+      //   toast("Maximum 6 players allowed");
+      //   return prev;
+      // }
+
+      return [...prev, p];
+    });
   };
 
-  // const [deletePlayer, setDeletePlayer] = useState([]);
+  // Delete Players from Cart Or list
   const handleDelete = (player) => {
-    // console.log("delete btn clicked", player);
-
     const updated = choosePlayer.filter((item) => item.id !== player.id);
-    setChoosePlayer(updated);
+    setChoosePlayer([...updated]);
   };
 
-  // console.log(choosePlayer);
   // Players array loading from json data
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -39,7 +43,7 @@ const App = () => {
     const loadData = async () => {
       try {
         setLoading(true);
-        const res = await fetch("/public/players.json");
+        const res = await fetch("/players.json");
         if (!res.ok) throw new Error("data can not fetch");
         const data = await res.json();
         setPlayers(data);
@@ -56,10 +60,6 @@ const App = () => {
     return <span className="loading loading-spinner loading-xl"></span>;
   if (error) return <p>Error : {error}</p>;
   // Players array data loads end here
-
-  // console.log(players);
-
-  // toggle available player and selected player
 
   return (
     <div className="">

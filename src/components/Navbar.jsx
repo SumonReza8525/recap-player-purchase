@@ -10,7 +10,7 @@ const Navbar = () => {
         </a>
       </div>
       <div className="flex items-center gap-1">
-        <p className="font-bold">600000000</p>
+        <p className="font-bold">70000000</p>
         <img src={dollarImg} alt="" />
       </div>
     </div>

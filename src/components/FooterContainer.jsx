@@ -1,5 +1,5 @@
 import React from "react";
-import footerImg from "/public/bg-shadow.png";
+import footerImg from "/bg-shadow.png";
 const FooterContainer = () => {
   return (
     <div className="w-full   mt-50 relative">
