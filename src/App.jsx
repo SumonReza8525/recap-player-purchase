@@ -38,9 +38,11 @@ const App = () => {
         <Navbar></Navbar>
         <Hero></Hero>
 
-        {players.map((player) => (
-          <Players key={player.id} player={player}></Players>
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {players.map((player) => (
+            <Players key={player.id} player={player}></Players>
+          ))}
+        </div>
       </Container>
     </div>
   );
