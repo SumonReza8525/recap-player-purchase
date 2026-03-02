@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Container from "./components/Container";
 import Hero from "./components/Hero";
 import Players from "./components/Players";
+import FooterContainer from "./components/FooterContainer";
 
 const App = () => {
   // Players array loading from json data
@@ -44,6 +45,7 @@ const App = () => {
           ))}
         </div>
       </Container>
+      <FooterContainer></FooterContainer>
     </div>
   );
 };

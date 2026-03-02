@@ -4,11 +4,11 @@ import flagImg from "../assets/report.png";
 const Players = ({ player }) => {
   return (
     <div
-      className="border-2 border-[rgba(96,165,250,0.6)] rounded-2xl p-5 
+      className="border-3 border-[rgba(96,165,250,0.6)] rounded-2xl p-5 
 space-y-4 transition-all duration-300 
 hover:-translate-y-2 
 hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] 
-hover:border-[rgba(96,165,250,0.39)]"
+hover:border-[rgba(96,165,250,0.93)]"
     >
       <img
         className="w-full object-cover rounded-2xl"
