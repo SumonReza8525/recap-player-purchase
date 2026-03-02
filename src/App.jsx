@@ -4,8 +4,11 @@ import Container from "./components/Container";
 import Hero from "./components/Hero";
 import Players from "./components/Players";
 import FooterContainer from "./components/FooterContainer";
+import TogglePlayers from "./components/TogglePlayers";
+import SelectedContainer from "./components/SelectedContainer";
 
 const App = () => {
+  const [toggle, setToggle] = useState(true);
   // Players array loading from json data
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -32,18 +35,26 @@ const App = () => {
   if (error) return <p>Error : {error}</p>;
   // Players array data loads end here
 
-  console.log(players);
+  // console.log(players);
+
+  // toggle available player and selected player
+
   return (
-    <div>
+    <div className="">
       <Container>
         <Navbar></Navbar>
         <Hero></Hero>
+        <TogglePlayers toggle={toggle} setToggle={setToggle}></TogglePlayers>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {players.map((player) => (
-            <Players key={player.id} player={player}></Players>
-          ))}
-        </div>
+        {toggle ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {players.map((player) => (
+              <Players key={player.id} player={player}></Players>
+            ))}
+          </div>
+        ) : (
+          <SelectedContainer></SelectedContainer>
+        )}
       </Container>
       <FooterContainer></FooterContainer>
     </div>

@@ -36,7 +36,7 @@ hover:border-[rgba(96,165,250,0.93)]"
         <p className="font-semibold">
           Price : $<span>{player.playerPrice}</span>
         </p>
-        <button className="px-3 py-1.5 rounded-xl bg-gray-300">
+        <button className="px-3 py-1.5 rounded-xl bg-gray-300 font-semibold">
           Choose Player
         </button>
       </div>
