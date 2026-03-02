@@ -21,6 +21,15 @@ const App = () => {
       setChoosePlayer([...choosePlayer, p]);
     }
   };
+
+  // const [deletePlayer, setDeletePlayer] = useState([]);
+  const handleDelete = (player) => {
+    // console.log("delete btn clicked", player);
+
+    const updated = choosePlayer.filter((item) => item.id !== player.id);
+    setChoosePlayer(updated);
+  };
+
   // console.log(choosePlayer);
   // Players array loading from json data
   const [players, setPlayers] = useState([]);
@@ -75,7 +84,10 @@ const App = () => {
             ))}
           </div>
         ) : (
-          <SelectedContainer choosePlayer={choosePlayer}></SelectedContainer>
+          <SelectedContainer
+            choosePlayer={choosePlayer}
+            handleDelete={handleDelete}
+          ></SelectedContainer>
         )}
 
         <ToastContainer></ToastContainer>

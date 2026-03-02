@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddedPlayerCard = ({ p }) => {
+const AddedPlayerCard = ({ p, handleDelete }) => {
   return (
     <div className="flex justify-between items-center bg-accent-content p-3 rounded-xl max-w-225 mx-auto">
       <div className="flex gap-3 items-center">
@@ -15,7 +15,12 @@ const AddedPlayerCard = ({ p }) => {
           <p className="text-gray-300">{p.playerCountry}</p>
         </div>
       </div>
-      <p className="text-red-600 font-semibold">Delete</p>
+      <p
+        onClick={() => handleDelete(p)}
+        className="text-red-500 hover:text-red-700 transition-colors duration-200 font-semibold cursor-pointer"
+      >
+        Delete
+      </p>
     </div>
   );
 };
